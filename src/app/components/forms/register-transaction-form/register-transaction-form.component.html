@@ -1,0 +1,41 @@
+<form (submit)="handleSubmit($event)">
+  <h2 class="font-bold text-[32px]">Cadastre a transação</h2>
+  <div class="flex justify-between gap-7 pb-3">
+    <label for="value-transaction" class="flex w-1/2 flex-col font-bold">
+      Valor
+      <input
+        type="number"
+        id="value-transaction"
+        placeholder="R$"
+        class="h-12 input-style"
+        [formControl]="value"
+      />
+    </label>
+
+    <label for="type-transaction" class="flex w-1/2 flex-col font-bold"
+      >Tipo
+
+      <select id="type-transaction" class="h-12 input-style cursor-pointer">
+        <option value="true">Entrada</option>
+        <option value="false">Saída</option>
+      </select>
+    </label>
+  </div>
+  <label for="description-transaction" class="label-style">
+    Descrição
+    <textarea
+      [formControl]="description"
+      class="input-style py-4"
+      id="description-transaction"
+      cols="30"
+      rows="4"
+      placeholder="Digite sua descrição..."
+    ></textarea>
+  </label>
+  <button
+    type="submit"
+    class="bg-primary text-white font-bold text-center py-4 px-8 rounded-md hover:bg-blue-700 mt-3"
+  >
+    Cadastro
+  </button>
+</form>

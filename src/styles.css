@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.label-style {
+  @apply flex flex-col font-bold
+}
+
+.input-style {
+  @apply bg-gray-100 outline-primary rounded-sm shadow hover:bg-slate-200 px-4;
+}

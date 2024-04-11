@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Transactions } from '../../services';
+import { RegisterTransactionFormComponent } from '../../components';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [],
+  imports: [RegisterTransactionFormComponent],
   providers: [Transactions],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
