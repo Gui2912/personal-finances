@@ -1,6 +1,19 @@
-<main class="w-full min-h-screen bg-primary flex justify-center items-center">
-  <section class="w-full py-8 px-10 max-w-4xl bg-white rounded-md shadow-lg">
-    <app-register-transaction-form></app-register-transaction-form>
-  </section>
-  <section></section>
+<main class="min-h-screen bg-gradient-to-r from-purple-500 to-pink-500 flex justify-center md:pt-5">
+  <div class="flex flex-col justify-center items-center gap-7 max-w-4xl w-full">
+    <section class="py-8 px-10 bg-white rounded-md shadow-lg">
+      <app-register-transaction-form></app-register-transaction-form>
+    </section>
+    <section>
+      <ul *ngIf="listAllTransactions.length > 0" class="flex flex-col gap-5">
+        <app-total-card></app-total-card>
+        <app-transaction-card
+          *ngFor="let transactionElt of listAllTransactions"
+          [transaction]="transactionElt"
+        ></app-transaction-card>
+      </ul>
+      <div *ngIf="listAllTransactions.length === 0" class="bg-white font-bold text-center w-full px-10 py-8">
+        Nenhuma transação registrada até o momento!
+      </div>
+    </section>
+  </div>
 </main>

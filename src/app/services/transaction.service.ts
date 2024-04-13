@@ -1,9 +1,18 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, computed, signal } from '@angular/core';
 import { ITransaction, TCreateTransaction } from '../interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class Transactions {
   readonly transactionList = signal<ITransaction[]>([]);
+  readonly total = computed(() =>
+    this.transactionList().reduce((acc, transaction) => {
+      if (transaction.type === true) {
+        return acc + transaction.value;
+      } else {
+        return acc - transaction.value;
+      }
+    }, 0)
+  );
 
   getTransactions(): ITransaction[] {
     return this.transactionList();
@@ -12,8 +21,8 @@ export class Transactions {
   addTransaction(transactionData: TCreateTransaction): void {
     const newTransaction = { ...transactionData, id: crypto.randomUUID() };
     this.transactionList.update((transaction) => [
-      ...transaction,
       newTransaction,
+      ...transaction,
     ]);
   }
 
@@ -24,14 +33,6 @@ export class Transactions {
   }
 
   totalValue() {
-    const transactions = this.transactionList();
-
-    const totalSum = transactions.reduce((total, transaction) => {
-      return (
-        total + (transaction.type ? transaction.value : -transaction.value)
-      );
-    }, 0);
-
-    return totalSum;
+    return this.total();
   }
 }

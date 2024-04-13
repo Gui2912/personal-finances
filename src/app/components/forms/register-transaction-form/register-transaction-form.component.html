@@ -15,9 +15,9 @@
     <label for="type-transaction" class="flex w-1/2 flex-col font-bold"
       >Tipo
 
-      <select id="type-transaction" class="h-12 input-style cursor-pointer">
-        <option value="true">Entrada</option>
-        <option value="false">Saída</option>
+      <select [formControl]="type" id="type-transaction" class="h-12 input-style cursor-pointer">
+        <option [ngValue]="true">Entrada</option>
+        <option [ngValue]="false">Saída</option>
       </select>
     </label>
   </div>

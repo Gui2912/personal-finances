@@ -1,0 +1,24 @@
+<li
+  class="px-10 py-8 h-28 bg-white w-full flex justify-between scale-y-animation"
+>
+  <div>
+    <p
+      [ngClass]="{
+        'text-primary': transaction.type,
+        'text-red-500': !transaction.type
+      }"
+    >
+      R$ {{ transaction.value.toFixed(2) }}
+    </p>
+    <h4>{{ transaction.description }}</h4>
+  </div>
+  <div class="flex items-center gap-2">
+    <p>{{ transaction.type ? "Entrada" : "Saída" }}</p>
+    <button
+      (click)="deleteTransaction()"
+      class="flex items-center text-primary hover:text-red-500"
+    >
+      <span class="material-symbols-outlined"> delete </span>
+    </button>
+  </div>
+</li>

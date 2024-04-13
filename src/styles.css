@@ -8,14 +8,39 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+section {
+  @apply w-full;
+}
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
 .label-style {
-  @apply flex flex-col font-bold
+  @apply flex flex-col font-bold;
 }
 
 .input-style {
   @apply bg-gray-100 outline-primary rounded-sm shadow hover:bg-slate-200 px-4;
+}
+
+@keyframes scale-in-tl {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+
+.scale-y-animation {
+  animation: scale-in-tl 0.4s ease-in forwards;
 }
